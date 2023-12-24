@@ -192,7 +192,8 @@ where
         };
 
         // Fetch initial value
-        fetch_from_storage();
+        let initial_fetch = fetch_from_storage.clone();
+        create_effect(move |_| { initial_fetch() });
 
         // Fires when storage needs to be fetched
         let notify = create_trigger();
